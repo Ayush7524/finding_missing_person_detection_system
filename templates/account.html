@@ -1,0 +1,93 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>User Account</title>
+</head>
+<style>
+    .add-keyword-panel {
+        margin-top: 150px;
+	}
+</style>
+<body background="static/people_find.jpg">
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<div class="container">
+	</br>
+	<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+	  <a class="navbar-brand" href="#"></a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	  </button>
+
+	  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+		<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+		  <li class="nav-item {%if active== 'new_test'%} active{%endif%}"> 
+			<a class="nav-link" href="/register_missing">Register Missing</span></a>
+		  </li>
+		  <li class="nav-item">
+			<a class="nav-link text-danger" href="/logout">Log-Out</a>
+		  </li>
+		</ul>
+	  </div>
+	</nav>
+</div>
+	
+	<div class="container-fluid">
+	<div class="table-scrol bg-light">
+		 <h1 align="center">List of Missings & (Last Seen)</h1>
+		   <!-- <div class="table-responsive">-->
+			<table class="table table-bordered table-hover table-striped" >
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Name</th>
+						<th>Age</th>
+						<th>Gender</th>
+						<th>Height</th>
+						<th>Weight</th>
+						<th>Address</th>
+						<th>Missing Date</th>
+						<th>Missing Time</th>
+						<th>From Address</th>
+						<th>Reward</th>
+						<th>Last Seen</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				
+				
+				{% for person, latest_seen in results %}
+				<tr>
+					<td align="center">{{ person.id }}</td>
+					<td align="center">{{ person.person_name }}</td>
+					<td align="center">{{ person.age }}</td>
+					<td align="center">{{ person.gender }}</td>
+					<td align="center">{{ person.height }} cm</td>
+					<td align="center">{{ person.weight }} kg</td>
+					<td align="center">{{ person.address }}</td>
+					<td align="center">{{ person.missing_date }}</td>
+					<td align="center">{{ person.missing_time }}</td>
+					<td align="center">{{ person.missing_from_address }}</td>
+					<td align="center">{{ person.price }}</td>
+					<td align="center">{{ latest_seen or "N/A" }}</td>
+					<td align="center">
+					<a href="/history/{{person.id}}" class="btn btn-sm btn-info">More</a>
+					</td>
+				</tr>
+				{% endfor %}
+			</table>
+	</div>
+</div>
+	
+	
+	
+
+
+
+
+</body>
+
+</html>
